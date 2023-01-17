@@ -1,0 +1,30 @@
+body{
+    background-color: rgb(15, 15, 15);
+}
+
+div{
+    display: flex;
+}
+
+button{
+
+    height: 100px;
+    width: 100px;
+    border: 6px;
+    border-color: rgb(0, 56, 105);
+    border-style: solid;
+    border-radius: 20px;
+
+    background-color: rgb(41, 43, 43);
+    color: rgb(224, 224, 224);
+    font-size: 40px;
+    font-weight: bolder;
+    
+
+}
+
+.equalsButton
+{
+    height: 200px;
+    transform: translateY(-100px);
+}
