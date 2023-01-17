@@ -6,6 +6,8 @@ const addNumbers = function(numberA, numberB)
 {
     let addedNumber = numberA + numberB;
 
+    console.log(addedNumber);
+
     return addedNumber;
 }
 
@@ -14,6 +16,8 @@ const addNumbers = function(numberA, numberB)
 const subtractNumbers = function(numberA, numberB)
 {
     let subtractedNumber = numberA - numberB;
+
+    console.log(subtractedNumber);
 
     return subtractedNumber;
 }
@@ -24,6 +28,8 @@ const multiplyNumbers = function(numberA, numberB)
 {
     let multipliedNumber = numberA * numberB;
 
+    console.log(multipliedNumber);
+
     return multipliedNumber;
 }
 
@@ -33,10 +39,35 @@ const divideNumbers = function(numberA, numberB)
 {
     let dividedNumber = numberA / numberB;
 
+    console.log(dividedNumber);
+
     return dividedNumber;
 }
 
 
 //////////////////////
 
+//Operate Function
+
+const operateNumbers = function(operator, numberA, numberB)
+{
+
+    if(operator == 'add')
+    {
+        addNumbers(numberA, numberB);
+    }
+    else if(operator === 'subtract')
+    {
+        subtractNumbers(numberA, numberB);
+    }
+    else if(operator == 'multiply')
+    {
+        multiplyNumbers(numberA, numberB);
+    }
+    else if(operator == 'divide')
+    {
+        divideNumbers(numberA, numberB);
+    }
+
+}
 
