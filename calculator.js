@@ -54,19 +54,19 @@ const operateNumbers = function(operator, numberA, numberB)
 
     if(operator == 'add')
     {
-        addNumbers(numberA, numberB);
+        return addNumbers(numberA, numberB);
     }
     else if(operator === 'subtract')
     {
-        subtractNumbers(numberA, numberB);
+        return subtractNumbers(numberA, numberB);
     }
     else if(operator == 'multiply')
     {
-        multiplyNumbers(numberA, numberB);
+        return multiplyNumbers(numberA, numberB);
     }
     else if(operator == 'divide')
     {
-        divideNumbers(numberA, numberB);
+        return divideNumbers(numberA, numberB);
     }
 
 }
@@ -76,6 +76,11 @@ const operateNumbers = function(operator, numberA, numberB)
 //Add Number to Screen Function
 const divScreen = document.querySelector('.displayScreen');
 
+//div display limit
+
+
+
+////Buttons
 const btn0 = document.querySelector("#zero");
 const btn1 = document.querySelector("#one");
 const btn2 = document.querySelector("#two");
@@ -87,14 +92,16 @@ const btn7 = document.querySelector("#seven");
 const btn8 = document.querySelector("#eight");
 const btn9 = document.querySelector("#nine");
 
-const btnAdd = document.querySelector("#add");
-const btnSubtract = document.querySelector("#subtract");
-const btnMultiply = document.querySelector("#multiply");
-const btnDivide = document.querySelector("#divide");
-const btnEquals = document.querySelector("#equals");
-const btnClear = document.querySelector("#clear");
+const btnAdd = document.querySelector(".addButton");
+const btnSubtract = document.querySelector(".subtractButton");
+const btnMultiply = document.querySelector(".multiplyButton");
+const btnDivide = document.querySelector(".divideButton");
+const btnEquals = document.querySelector(".equalsButton");
+const btnClear = document.querySelector(".clearButton");
 
 
+
+///////Button Listeners
 btn0.addEventListener("click", function () {
 
     divScreen.textContent = divScreen.textContent + "0";
@@ -147,6 +154,53 @@ btn9.addEventListener("click", function () {
 
 
 
+
+
+btnAdd.addEventListener("click", function () {
+
+    saveNumberOne = parseFloat(divScreen.textContent);
+    saveOperator = "add";
+    divScreen.textContent = "";
+});
+
+btnSubtract.addEventListener("click", function () {
+
+    saveNumberOne = parseFloat(divScreen.textContent);
+    saveOperator = "subtract";
+    divScreen.textContent = "";
+});
+
+btnMultiply.addEventListener("click", function () {
+
+    saveNumberOne = parseFloat(divScreen.textContent);
+    saveOperator = "multiply";
+    divScreen.textContent = "";
+});
+
+btnDivide.addEventListener("click", function () {
+
+    saveNumberOne = parseFloat(divScreen.textContent);
+    saveOperator = "divide";
+    divScreen.textContent = "";
+});
+
+btnEquals.addEventListener("click", function () {
+
+    saveNumberTwo = parseFloat(divScreen.textContent);
+
+    divScreen.textContent = "";
+
+    finalNumber = operateNumbers(saveOperator, saveNumberOne, saveNumberTwo);
+
+    console.log(finalNumber);
+
+    divScreen.textContent = divScreen.textContent + finalNumber;
+});
+
+btnClear.addEventListener("click", function () {
+
+    divScreen.textContent = "";
+});
 
 
 
