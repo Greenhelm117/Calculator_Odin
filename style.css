@@ -11,7 +11,7 @@ button{
     height: 100px;
     width: 100px;
     border: 6px;
-    border-color: rgb(0, 56, 105);
+    border-color: rgb(65, 65, 65);
     border-style: solid;
     border-radius: 20px;
 
@@ -26,12 +26,16 @@ button{
 button:hover
 {
     
-    color: aquamarine;
+    color: rgb(255, 0, 0);
 }
 
 button:active
 {
-    border-radius: 50px;
+    border-style: inset;
+    border-color: black;
+    
+    font-size: 36px;
+
     background-color: rgb(22, 22, 22);
 }
 
@@ -46,9 +50,11 @@ button:active
     height: 100px;
     width: 500px;
     border-style: solid;
-    border-color: rgb(0, 56, 105);
+    border-color: rgb(124, 124, 124);
     border-radius: 20px;
 
     font-size: 90px;
-    color: aqua;
+    color: rgb(0, 255, 21);
+
+    
 }

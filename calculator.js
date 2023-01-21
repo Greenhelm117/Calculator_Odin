@@ -6,7 +6,6 @@ const addNumbers = function(numberA, numberB)
 {
     let addedNumber = numberA + numberB;
 
-    console.log(addedNumber);
 
     return addedNumber;
 }
@@ -17,7 +16,7 @@ const subtractNumbers = function(numberA, numberB)
 {
     let subtractedNumber = numberA - numberB;
 
-    console.log(subtractedNumber);
+
 
     return subtractedNumber;
 }
@@ -28,7 +27,7 @@ const multiplyNumbers = function(numberA, numberB)
 {
     let multipliedNumber = numberA * numberB;
 
-    console.log(multipliedNumber);
+
 
     return multipliedNumber;
 }
@@ -37,9 +36,13 @@ const multiplyNumbers = function(numberA, numberB)
 
 const divideNumbers = function(numberA, numberB)
 {
+
     let dividedNumber = numberA / numberB;
 
-    console.log(dividedNumber);
+    if(numberB == 0)
+    {
+        return "Please don't";
+    }
 
     return dividedNumber;
 }
@@ -102,105 +105,199 @@ const btnClear = document.querySelector(".clearButton");
 
 
 ///////Button Listeners
+const printNumber = function(number){
+
+    if(equalsPressed == true)
+    {
+        divScreen.textContent = "";
+        equalsPressed = false;
+    }
+
+    divScreen.textContent = divScreen.textContent + number;
+    
+    if(divScreen.textContent.length > 11)
+    {
+        displayText = divScreen.textContent;
+        divScreen.textContent = displayText.substring(0,11);
+    }
+}
+
+
 btn0.addEventListener("click", function () {
 
-    divScreen.textContent = divScreen.textContent + "0";
+    printNumber(0);
 });
 
 btn1.addEventListener("click", function () {
 
-    divScreen.textContent = divScreen.textContent + "1";
+    printNumber(1);
 });
 
 btn2.addEventListener("click", function () {
 
-    divScreen.textContent = divScreen.textContent + "2";
+    printNumber(2);
 });
 
 btn3.addEventListener("click", function () {
 
-    divScreen.textContent = divScreen.textContent + "3";
+    printNumber(3);
 });
 
 btn4.addEventListener("click", function () {
 
-    divScreen.textContent = divScreen.textContent + "4";
+    printNumber(4);
 });
 
 btn5.addEventListener("click", function () {
 
-    divScreen.textContent = divScreen.textContent + "5";
+    printNumber(5);
 });
 
 btn6.addEventListener("click", function () {
 
-    divScreen.textContent = divScreen.textContent + "6";
+    printNumber(6);
 });
 
 btn7.addEventListener("click", function () {
 
-    divScreen.textContent = divScreen.textContent + "7";
+    printNumber(7);
 });
 
 btn8.addEventListener("click", function () {
 
-    divScreen.textContent = divScreen.textContent + "8";
+    printNumber(8);
 });
 
 btn9.addEventListener("click", function () {
 
-    divScreen.textContent = divScreen.textContent + "9";
+    printNumber(9);
 });
 
 
+saveOperator = 0;
+saveNumberOne = 0;
+saveNumberTwo = 0;
+operatorClicked = false;
+equalsPressed = false;
+//console.log(clicked);
 
+///numbers show up when pressed, when operator pressed, save number, track operator, and clear/replace number 
+///when operator pressed again, save number, calculate sum, display sum, put sum in firstnumber saved spot
 
+//display only certain number of characters and round
 
 btnAdd.addEventListener("click", function () {
 
-    saveNumberOne = parseFloat(divScreen.textContent);
-    saveOperator = "add";
-    divScreen.textContent = "";
+    if(operatorClicked == true || equalsPressed == true) {
+        saveNumberTwo = parseFloat(divScreen.textContent);
+        equals();
+        saveOperator = "add";
+        //operatorClicked = false;
+        //divScreen.textContent = "";
+    }
+    else
+    {
+        saveNumberOne = parseFloat(divScreen.textContent);
+        equals();
+        saveOperator = "add";
+        operatorClicked = true;
+        divScreen.textContent = "";
+    }  
 });
 
 btnSubtract.addEventListener("click", function () {
 
-    saveNumberOne = parseFloat(divScreen.textContent);
-    saveOperator = "subtract";
-    divScreen.textContent = "";
+
+    if(operatorClicked == true || equalsPressed == true) {
+        saveNumberTwo = parseFloat(divScreen.textContent);
+        equals();
+        saveOperator = "subtract";
+        //operatorClicked = false;
+        //divScreen.textContent = "";
+    }
+    else
+    {
+        saveNumberOne = parseFloat(divScreen.textContent);
+        equals();
+        saveOperator = "subtract";
+        operatorClicked = true;
+        divScreen.textContent = "";
+    }  
 });
 
 btnMultiply.addEventListener("click", function () {
 
-    saveNumberOne = parseFloat(divScreen.textContent);
-    saveOperator = "multiply";
-    divScreen.textContent = "";
+   
+    if(operatorClicked == true || equalsPressed == true) {
+        saveNumberTwo = parseFloat(divScreen.textContent);
+        equals();
+        saveOperator = "multiply";
+        //operatorClicked = false;
+        //divScreen.textContent = "";
+    }
+    else
+    {
+        saveNumberOne = parseFloat(divScreen.textContent);
+        equals();
+        saveOperator = "multiply";
+        operatorClicked = true;
+        divScreen.textContent = "";
+    }  
 });
 
 btnDivide.addEventListener("click", function () {
 
-    saveNumberOne = parseFloat(divScreen.textContent);
-    saveOperator = "divide";
-    divScreen.textContent = "";
+   
+    if(operatorClicked == true || equalsPressed == true) {
+        saveNumberTwo = parseFloat(divScreen.textContent);
+        equals();
+        saveOperator = "divide";
+        //operatorClicked = false;
+        //divScreen.textContent = "";
+    }
+    else
+    {
+        saveNumberOne = parseFloat(divScreen.textContent);
+        equals();
+        saveOperator = "divide";
+        operatorClicked = true;
+        divScreen.textContent = "";
+    }  
 });
 
 btnEquals.addEventListener("click", function () {
 
-    saveNumberTwo = parseFloat(divScreen.textContent);
-
-    divScreen.textContent = "";
-
-    finalNumber = operateNumbers(saveOperator, saveNumberOne, saveNumberTwo);
-
-    console.log(finalNumber);
-
-    divScreen.textContent = divScreen.textContent + finalNumber;
+    equals();
 });
 
 btnClear.addEventListener("click", function () {
 
+    saveNumberOne = 0;
+    saveNumberTwo = 0;
+    saveOperator = 0;
+
     divScreen.textContent = "";
 });
 
+const equals = function()
+{
+    if(saveOperator != 0)
+    {
+        equalsPressed = true;
+        if(operatorClicked == false){
+            saveNumberTwo = parseFloat(divScreen.textContent);
+        }
+        //operatorClicked = false;
+        finalNumber = operateNumbers(saveOperator, parseFloat(saveNumberOne), parseFloat(saveNumberTwo));
+        divScreen.textContent = parseFloat(finalNumber.toFixed(9).substring(0,11));
+        saveNumberOne = parseFloat(divScreen.textContent);
+        //displayText = divScreen.textContent;
+        //divScreen.textContent = displayText.substring(0,11);
+        saveOperator = 0;
+    }
+}
 
 
+
+///22 is in savenumberone
+//when operator is called, numberOne is overwritten
